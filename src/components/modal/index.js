@@ -56,26 +56,9 @@ export default class Modal extends Component {
             <button onclick={this.handleClose} className="btn btnClose">
               <span className="visuallyHidden">Close</span>
             </button>
-            {showHeader && (
-              <div className="header">
-                {showSignup && (
-                  <button
-                    className={`btn btnHeader ${page.signup ? "active" : ""}`}
-                    onclick={this.linkHandler("signup")}
-                  >
-                    {t("sign_up")}
-                  </button>
-                )}
-                {!devSettings && (
-                  <button
-                    className={`btn btnHeader ${page.login ? "active" : ""}`}
-                    onclick={this.linkHandler("login")}
-                  >
-                    {t("log_in")}
-                  </button>
-                )}
-              </div>
-            )}
+            <div className="header">
+              Enter the Salon
+            </div>
             {page.title && (
               <div className="header">
                 <button className="btn btnHeader active">
@@ -113,15 +96,6 @@ export default class Modal extends Component {
             {children}
           </div>
         </div>
-        {logo && (
-          <a
-            href="https://www.netlify.com"
-            className={`callOut${loading ? " visuallyHidden" : ""}`}
-          >
-            <span className="netlifyLogo" />
-            {t("coded_by")}
-          </a>
-        )}
       </div>
     );
   }

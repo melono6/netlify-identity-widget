@@ -1,3 +1,21 @@
+@font-face {
+  font-family: "DidotLTStd";
+  src: url("./fonts/DidotLTStd-Bold/font.woff2") format("woff2"),
+    url("./fonts/DidotLTStd-Bold/font.woff") format("woff");
+  font-weight: 800;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "FuturaLTPro";
+  src: url("./fonts/FuturaLTPro-Heavy/font.woff2") format("woff2"),
+    url("./fonts/FuturaLTPro-Heavy/font.woff") format("woff");
+  font-weight: 900;
+  font-display: swap;
+  font-style: normal;
+}
+
 :root {
   --baseColor: rgb(14, 30, 37);
   --subduedColor: #a3a9ac;
@@ -75,10 +93,10 @@
 
 .modalContent {
   position: relative;
-  padding: var(--basePadding);
+  padding: 60px 100px 45px;
   opacity: 0;
   transform: translateY(10px) scale(1);
-  background: #fff;
+  background: #FFF6E0;
 
   [aria-hidden="false"] & {
     animation: bouncyEntrance 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
@@ -100,21 +118,20 @@
 
 @media (min-width: 480px) {
   .modalContainer::before {
-    background-color: var(--baseColor);
+    background-color: rgba(0, 0, 0, 0.9);
     animation: fadeIn 0.1s ease-in;
     animation-fill-mode: forwards;
   }
 
   .modalDialog {
-    max-width: 364px;
+    max-width: 598px;
     justify-content: center;
   }
 
   .modalContent {
-    background: #fff;
+    background: #FFF6E0;
     box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.07),
       0 12px 32px 0 rgba(14, 30, 37, 0.1);
-    border-radius: 8px;
     margin-top: var(--basePadding);
   }
 }
@@ -209,16 +226,16 @@
 .btn {
   display: block;
   position: relative;
-  width: 100%;
+  /* width: 100%; */
   height: auto;
   margin: 14px 0 0;
-  padding: 6px;
+  padding: 15px 30px;
   outline: 0;
   cursor: pointer;
-  border: 2px solid var(--baseColor);
-  border-radius: 4px;
-  background-color: #2d3b41;
-  color: #fff;
+  border: none;
+  border-radius: 0;
+  background-color: #F75105;
+  color: white;
   transition: background-color 0.2s ease;
   font-family: var(--fontFamily);
   font-size: 14px;
@@ -231,7 +248,7 @@
 
 .btn:hover,
 .btn:focus {
-  background-color: var(--baseColor);
+  /* background-color: var(--baseColor); */
   text-decoration: none;
 }
 
@@ -242,15 +259,15 @@
   margin: 0;
   padding: 0;
   border: 0;
-  width: 24px;
+  width: auto;
   height: 24px;
   border-radius: 50%;
   margin: 6px;
-  background: #fff;
-  color: var(--subduedColor);
+  background: transparent;
+  color: black;
 }
 
-.btnClose::before {
+.btnClose::after {
   content: "×";
   font-size: 25px;
   line-height: 9px;
@@ -258,17 +275,49 @@
 
 .btnClose:hover,
 .btnClose:focus {
-  background: #e9ebeb;
-  color: var(--baseColor);
+  /* background: #e9ebeb;
+  color: var(--baseColor); */
 }
 
 .header {
   display: flex;
   margin-top: -8px;
   margin-bottom: var(--basePadding);
+  color: #000000;
+  font-family: "DidotLTStd";
+  font-size: 48px;
+  font-weight: bold;
+  letter-spacing: 0.8px;
+  line-height: 56px;
+  position: relative;
+  padding-top: 25px;
+}
+
+.header::before, .header::after {
+  content: "";
+  background-color: #f25922;
+  transform: translateX(-50%);
+  display: block;
+  left: 50%;
+  position: absolute;
+}
+
+.header:before {
+  width: 0.5rem;
+  height: 0.5rem;
+  transform: rotate(45deg);
+  transform-origin: 0 0;
+  top: -4.6px;
+}
+
+.header:after {
+  top: 0;
+  width: 100%;
+  height: 0.1rem;
 }
 
 .btnHeader {
+  display: none;
   font-size: 16px;
   line-height: 24px;
   background: #fff;
@@ -301,14 +350,14 @@
   position: relative;
   width: auto;
   height: auto;
-  margin: 14px auto 0;
+  margin: 14px 0 0;
   padding: 6px;
   padding-bottom: 0;
   outline: 0;
   cursor: pointer;
   color: var(--baseColor);
   border: none;
-  border-bottom: 2px solid #e9ebeb;
+  border-bottom: 0;
   border-radius: 0;
   background-color: inherit;
   transition: border-color 0.2s ease;
@@ -316,8 +365,10 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 24px;
-  text-align: center;
+  text-align: left;
   white-space: nowrap;
+  text-decoration: none;
+  text-transform: uppercase;
 }
 
 .btnLink:hover,
@@ -338,12 +389,12 @@
   box-sizing: border-box;
   display: block;
   width: 100%;
-  height: 40px;
+  height: 48px;
   margin: 0;
-  padding: 6px 12px 6px 34px;
-  border: 2px solid #e9ebeb;
+  padding: 6px 16px 6px 16px;
+  border: 2px solid black;
   border-radius: 4px;
-  background: #fff;
+  background: #FFF6E0;
   color: var(--baseColor);
   box-shadow: none;
   font-size: 16px;
@@ -352,6 +403,15 @@
   transition: box-shadow ease-in-out 0.15s;
   -webkit-appearance: none;
   -moz-appearance: none;
+  font-family: "FuturaLTPro";
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 1.2px;
+  line-height: 32px;
+}
+
+.formControl:focus {
+  background-color: white;
 }
 
 .inputFieldIcon {
@@ -519,6 +579,17 @@
   position: absolute;
   width: 1px;
   #fff-space: nowrap;
+}
+
+.label {
+  color: black;
+  font-family: "FuturaLTPro";
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 3.4px;
+  line-height: 14px;
+  margin-bottom: 14px;
+  display: block;
 }
 
 .subheader {

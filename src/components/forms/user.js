@@ -30,7 +30,7 @@ export default class UserForm extends Component {
         {page.name && (
           <div className="formGroup">
             <label>
-              <span className="visuallyHidden">
+              <span className="label">
                 {t("form_name_placeholder")}
               </span>
               <input
@@ -38,50 +38,47 @@ export default class UserForm extends Component {
                 type="name"
                 name="name"
                 value={name}
-                placeholder={
-                  namePlaceholder ? namePlaceholder : t("form_name_label")
-                }
+                // placeholder={
+                //   namePlaceholder ? namePlaceholder : t("form_name_label")
+                // }
                 autocapitalize="off"
                 required
                 oninput={this.handleInput}
               />
-              <div className="inputFieldIcon inputFieldName" />
             </label>
           </div>
         )}
         {page.email && (
           <div className="formGroup">
             <label>
-              <span className="visuallyHidden">{t("form_name_label")}</span>
+              <span className="label">{t("form_name_label")}</span>
               <input
                 className="formControl"
                 type="email"
                 name="email"
                 value={email}
-                placeholder={t("form_email_placeholder")}
+                // placeholder={t("form_email_placeholder")}
                 autocapitalize="off"
                 required
                 oninput={this.handleInput}
               />
-              <div className="inputFieldIcon inputFieldEmail" />
             </label>
           </div>
         )}
         {page.password && (
           <div className="formGroup">
             <label>
-              <span className="visuallyHidden">{t("form_password_label")}</span>
+              <span className="label">{t("form_password_label")}</span>
               <input
                 className="formControl"
                 type="password"
                 name="password"
                 value={password}
-                placeholder={t("form_password_placeholder")}
+                // placeholder={t("form_password_placeholder")}
                 autocomplete={page.password}
                 required
                 oninput={this.handleInput}
               />
-              <div className="inputFieldIcon inputFieldPassword" />
             </label>
           </div>
         )}
