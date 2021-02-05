@@ -56,14 +56,13 @@ export default class Modal extends Component {
             <button onclick={this.handleClose} className="btn btnClose">
               <span className="visuallyHidden">Close</span>
             </button>
-            <div className="header">
-              Enter the Salon
-            </div>
-            {page.title && (
+            {page.title ? (
               <div className="header">
-                <button className="btn btnHeader active">
                   {t(page.title)}
-                </button>
+              </div>
+            ) : (
+              <div className="header">
+                Enter the Salon
               </div>
             )}
             {devSettings && (

@@ -184,6 +184,7 @@ function runRoutes() {
 
   const m = hash.match(routes);
   if (m) {
+    store.openModal("login");
     store.verifyToken(m[1], m[2]);
     document.location.hash = "";
   }
@@ -249,24 +250,27 @@ function init(options = {}) {
   store.init(instantiateGotrue(APIUrl));
   store.modal.logo = logo;
   store.setNamePlaceholder(namePlaceholder);
-  iframe = document.createElement("iframe");
-  iframe.id = "netlify-identity-widget";
-  iframe.title = "Netlify identity widget";
-  iframe.onload = () => {
-    const styles = iframe.contentDocument.createElement("style");
+  iframe = document.createElement("div");
+  // iframe.id = "netlify-identity-widget";
+  // iframe.title = "Netlify identity widget";
+  // iframe.onload = () => {
+  setTimeout(() => {
+    const styles = document.createElement("style");
     styles.innerHTML = modalCSS.toString();
-    iframe.contentDocument.head.appendChild(styles);
+    document.head.appendChild(styles);
     root = render(
       <Provider store={store}>
         <App />
       </Provider>,
-      iframe.contentDocument.body,
+      iframe,
       root
     );
     runRoutes();
-  };
+  }, 100);
+    
+  // };
   setStyle(iframe, iframeStyle);
-  iframe.src = "about:blank";
+  // iframe.src = "about:blank";
   const container = options.container
     ? document.querySelector(options.container)
     : document.body;
